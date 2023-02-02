@@ -19,7 +19,7 @@ class App extends Component{
 
       <Text style={styles.timer}>0.0</Text>
 
-      <View>
+      <View style={styles.btnArea}>
 
       <TouchableOpacity style={styles.btn}>
         <Text style={styles.btnTexto}>VAI</Text>
@@ -44,6 +44,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#00aeef',
   },
+  timer:{
+    marginTop: -160,
+    color:'#FFF',
+    fontSize: 65,
+    fonteWeight: 'bold',
+  },
+  btnArea:{
+    flexDirection: 'row',
+    marginTop: 70,
+    height: 40,
+  },
+  btn:{
+    flex:1,
+    justifyContent:'center',
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    height: 40,
+    margin: 17,
+    borderRadius: 9
+  },
+  btnTexto:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#00aeef'
+  }
 });
 
 export default App;
