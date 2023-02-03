@@ -6,8 +6,27 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
+import { textChangeRangeIsUnchanged } from 'typescript';
 
 class App extends Component{
+  
+    constructor(props){
+      super(props);
+      this.state = {
+        numero: 0
+      };
+
+      this.vai = this.vai.bind(this);
+      this.limpar = this.limpar.bind(this);
+    }
+    vai(){
+      alert('VAI')
+    }
+
+    limpar(){
+
+    }
+  
   render(){
     return(
       <View style = {styles.container}>
@@ -17,15 +36,15 @@ class App extends Component{
       style={styles.cronometro}
       />
 
-      <Text style={styles.timer}>0.0</Text>
+      <Text style={styles.timer}> {this.state.numero.toFixed(1)} </Text>
 
       <View style={styles.btnArea}>
 
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity style={styles.btn} onPress={this.vai}>
         <Text style={styles.btnTexto}>VAI</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity style={styles.btn} onPress={this.limpar}>
         <Text style={styles.btnTexto}>LIMPAR</Text>
       </TouchableOpacity>
 
