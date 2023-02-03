@@ -13,17 +13,53 @@ class App extends Component{
     constructor(props){
       super(props);
       this.state = {
-        numero: 0
+        numero: 0,
+        botao: 'VAI',
+        ultimo: null
       };
+
+      //variavel do timer do relogio
+      this.timer = null;
 
       this.vai = this.vai.bind(this);
       this.limpar = this.limpar.bind(this);
     }
     vai(){
-      alert('VAI')
+      
+      if(this.timer != null){
+        //Aqui vai parar o timer
+        clearInterval(this.timer);
+        this.timer = null;
+
+        this.setState({botao: 'VAI'});
+      }else{
+
+        //começa a girar o timer
+          this.timer = setInterval( ()=> {
+        this.setState({numero: this.state.numero + 0.1 })
+      
+        // 0.1 + 0.1 = 0.2
+      
+      }, 100);
+
+      this.setState({botao: 'PARAR'});
+
+      }
+      
+    
     }
 
     limpar(){
+      if(this.timer != null){
+
+        //Aqui vai parar o timer
+        clearInterval(this.timer);
+        this.timer = null;
+      }
+      this.setState({
+        numero: 0,
+        botao: 'VAI'
+      })
 
     }
   
@@ -41,14 +77,19 @@ class App extends Component{
       <View style={styles.btnArea}>
 
       <TouchableOpacity style={styles.btn} onPress={this.vai}>
-        <Text style={styles.btnTexto}>VAI</Text>
+        <Text style={styles.btnTexto}>{this.state.botao}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.btn} onPress={this.limpar}>
         <Text style={styles.btnTexto}>LIMPAR</Text>
       </TouchableOpacity>
 
+      
 
+      </View>
+
+      <View style={styles.areaUltima}>
+      <Text>Ultimo tempo: (this.state.ultimo} </Text>
       </View>
 
       </View>
