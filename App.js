@@ -57,8 +57,9 @@ class App extends Component{
         this.timer = null;
       }
       this.setState({
+        ultimo: this.state.numero,
         numero: 0,
-        botao: 'VAI'
+        botao: 'VAI',
       })
 
     }
@@ -89,7 +90,7 @@ class App extends Component{
       </View>
 
       <View style={styles.areaUltima}>
-      <Text>Ultimo tempo: (this.state.ultimo} </Text>
+      <Text style={styles.textoCorrida}>{this.state.ultimo > 0 ? 'Ultimo tempo: ' + this.state.ultimo.toFixed(2) + 's' : ''} </Text>
       </View>
 
       </View>
@@ -128,6 +129,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#00aeef'
+  },
+  areaUltima: {
+    marginTop: 40,
+  },
+  textoCorrida:{
+    fontSize: 25,
+    fontStyle: 'italic',
+    color: '#FFF'
   }
 });
 
